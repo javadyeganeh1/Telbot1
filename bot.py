@@ -74,5 +74,20 @@ async def process_username(message: types.Message, state: FSMContext):
 async def main():
     await dp.start_polling(bot)
 
+import os
+import asyncio
+from aiogram import Bot, Dispatcher
+
+# ... بقیه کدها ...
+
+async def main():
+    await dp.start_polling(bot)
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    import uvicorn
+    uvicorn.run(
+        "bot:main",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 8080)),
+        log_level="info"
+    )
